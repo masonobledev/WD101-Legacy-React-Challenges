@@ -9,4 +9,15 @@ class DogIndex extends React.Component {
         };
     }
 
+    componentDidMount() {
+        const apiUrl = 'https://dog.ceo/api/breeds/image/random';
+        fetch(apiUrl)
+        .then(res => res.json())
+        .then(({ dogPhotos }) => { 
+            this.setState({
+                isLoaded: true,
+                photos: dogPhotos,
+            })
+        })
+    }
 }
