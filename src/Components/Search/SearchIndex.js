@@ -1,21 +1,50 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Input} from 'reactstrap';
  
-const SearchIndex extends Component() {
-   this.state = {
-     things: ['pen', 'marker', 'eraser', 'notebook', 'pencil', 'scissors', 'highlighter', 'stapler', 'paper clip', 'binder', 'hole punch', 'laminator', 'laminating sheets', 'protective sheets', 'index cards']
-   }
+class SearchIndex extends Component {
+  constructor (props){
+    super (props);
+    this.state = {
+      things: [
+        'pen', 
+        'marker', 
+        'eraser', 
+        'notebook', 
+        'pencil', 
+        'scissors', 
+        'highlighter', 
+        'stapler', 
+        'paper clip', 
+        'binder', 
+        'hole punch', 
+        'laminator', 
+        'laminating sheets', 
+        'protective sheets', 
+        'index cards',
+      ],
+        items: [],
+    };
+  }
+
+ searchFunction = (e) => {
+   const term = e.target.value
+   const results = this.state.things.filter ((thing) => thing.includes(term))
+   this.setState({ items: results });
  }
 
- function searchFunction() {
- }
+ filterArray = () => {}
 
  render() {
-     <div>
-       <Input placeholder='Search Here' />
-       <h3>Results:</h3>
-     </div>
+   return (
+    <div>
+    <Input 
+      onChange = {(e) => this.searchFunction(e)}
+      placeholder='Search here' 
+      />
+    <h3>Results: {this.state.items.join(", ")}</h3>
+  </div>
+   );
  }
-
+}
  
-export SearchIndex;
+export default SearchIndex;
