@@ -32,7 +32,7 @@ class SearchIndex extends Component {
    this.setState({ items: results });
  }
 
- filterArray = () => {}
+ //filterArray = () => {}
 
  render() {
    return (
